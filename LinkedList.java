@@ -1,3 +1,11 @@
+// Time Complexity:
+// insert: O(n) - In the worst case, we traverse to the end of the list to insert a new node.
+// printList: O(n) - We traverse the entire list to print all elements.
+
+// Space Complexity:
+// O(n) - where n is the number of elements.
+
+
 import java.io.*; 
   
 // Java program to implement 
@@ -18,6 +26,8 @@ public class LinkedList {
         Node(int d) 
         { 
             //Write your code here 
+            this.data = d;
+            this.next = null;
         } 
     } 
   
@@ -25,6 +35,7 @@ public class LinkedList {
     public static LinkedList insert(LinkedList list, int data) 
     { 
         // Create a new node with given data 
+        Node newNode = new Node(data);
    
         // If the Linked List is empty, 
         // then make the new node as head 
@@ -33,18 +44,28 @@ public class LinkedList {
             // and insert the new_node there 
 
             // Insert the new_node at last node 
-        // Return the list by head 
-        
+        if(list.head == null) {
+            list.head = newNode; 
+        }else {
+            Node current = list.head;
+            while(current.next!=null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        // Return the list by head
+        return list;
     } 
   
     // Method to print the LinkedList. 
     public static void printList(LinkedList list) 
     {  
         // Traverse through the LinkedList 
-   
-            // Print the data at current node 
-       
-            // Go to next node 
+        Node current = list.head;
+        while(current!=null) {
+            System.out.println(current.data + " ");
+            current = current.next;
+        }
     } 
    
     // Driver code 
